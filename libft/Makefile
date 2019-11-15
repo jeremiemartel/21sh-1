@@ -6,7 +6,7 @@ FLAGS = -Wall -Wextra -Werror
 
 C_PATH = ./srcs/
 
-O_PATH = ./.objs/
+O_PATH = ./objs/
 
 H_PATH = ./includes/
 
@@ -18,6 +18,7 @@ SRCS_F = ft_bzero.c ft_memalloc.c ft_memccpy.c ft_memchr.c ft_memcmp.c \
 		 ft_strcat.c ft_strchr.c ft_strchrnul.c ft_strclr.c ft_strcmp.c \
 		 ft_strcpy.c ft_strdel.c ft_strdup.c ft_strequ.c ft_striter.c \
 		 ft_striteri.c ft_strjoin.c ft_strlcat.c ft_strlen.c ft_strmap.c \
+		 ft_strjoin_onef.c ft_strjoin_free.c ft_strjoin_one.c \
 		 ft_strmapi.c ft_strncat.c ft_strncmp.c ft_strncpy.c ft_strnequ.c \
 		 ft_strnew.c ft_strnstr.c ft_strrchr.c ft_strreplace.c ft_strrev.c \
 		 ft_strsplit.c ft_strstr.c ft_strsub.c ft_strtrim.c \

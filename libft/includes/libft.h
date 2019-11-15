@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alalonzo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mabayle <mabayle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/12 12:12:26 by alalonzo          #+#    #+#             */
-/*   Updated: 2019/02/04 18:32:40 by alalonzo         ###   ########.fr       */
+/*   Updated: 2019/11/11 04:33:56 by mabayle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,9 @@ int					ft_strequ(char const *s1, char const *s2);
 int					ft_strnequ(char const *s1, char const *s2, size_t n);
 char				*ft_strsub(char const *s, unsigned int start, size_t len);
 char				*ft_strjoin(char const *s1, char const *s2);
+char	        	*ft_strjoin_free(char *s1, char *s2);
+char	            *ft_strjoin_one(char *s1, char c);
+char		        *ft_strjoin_onef(char *str, char c);
 char				*ft_strtrim(char const *s);
 char				**ft_strsplit(char const *s, char c);
 char				*ft_itoa(int n);

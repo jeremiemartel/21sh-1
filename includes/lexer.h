@@ -6,7 +6,7 @@
 /*   By: mabayle <mabayle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 04:21:06 by mabayle           #+#    #+#             */
-/*   Updated: 2019/09/07 05:31:20 by mabayle          ###   ########.fr       */
+/*   Updated: 2019/11/15 05:22:25 by mabayle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "libft.h"
+#include "sh.h"
 
 /*
 ** ENUM
@@ -65,6 +66,7 @@ typedef struct 			s_lex
 	char				*value;
 	char				*hdoc;
 	int					hdoc_delim;
+	int					state_quote;
 	enum e_tok_type		token;
 	enum e_operator		operator;
 	struct s_lex		*next;
@@ -83,6 +85,7 @@ typedef struct			s_21sh
 	char				*line;
 	t_lex				*lex;
 	t_ast				*ast;
+	t_env				*env;
 }						t_21sh;
 
 t_21sh					*g_shell;
@@ -90,11 +93,6 @@ t_21sh					*g_shell;
 /*
 ** PROTOTYPE
 */
-
-/*
-** MAIN.C
-*/
-int		main(int argc, char **argv);
 
 /*
 ** LEXER.C

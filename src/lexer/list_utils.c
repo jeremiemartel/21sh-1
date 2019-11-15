@@ -6,7 +6,7 @@
 /*   By: mabayle <mabayle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/30 05:17:16 by mabayle           #+#    #+#             */
-/*   Updated: 2019/09/07 05:13:40 by mabayle          ###   ########.fr       */
+/*   Updated: 2019/11/15 05:51:15 by mabayle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ t_lex	*list_new(char *input)
 		new->value = ft_strdup(input);
 	new->hdoc = NULL;
 	new->token = 0;
+	new->state_quote = 0;
 	new->operator = 0;
 	new->hdoc_delim = 0;
 	new->next = NULL;

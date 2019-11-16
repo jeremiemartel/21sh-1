@@ -6,7 +6,7 @@
 /*   By: mabayle <mabayle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/30 05:21:12 by mabayle           #+#    #+#             */
-/*   Updated: 2019/11/15 05:58:07 by mabayle          ###   ########.fr       */
+/*   Updated: 2019/11/16 06:23:32 by mabayle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,6 @@ int		quote_case(int i, char *input)
 		while (input[i] && input[i] != '\'')
 			i++;
 		input[i] != 39 ? i = -1 : i++;
-		i == -1 && g_shell->lex->state_quote == 0
-			? change_state(g_shell->lex->state_quote) : 0;
 	}
 	if (input[i] == '"')
 	{
@@ -73,8 +71,6 @@ int		quote_case(int i, char *input)
 				i++;
 		}
 		input[i] != 34 ? i = -1 : i++;
-		i == -1 && g_shell->lex->state_quote == 0
-			? change_state(g_shell->lex->state_quote) : 0;
 	}
 	return (i);
 }

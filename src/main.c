@@ -6,7 +6,7 @@
 /*   By: mabayle <mabayle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/30 04:53:07 by mabayle           #+#    #+#             */
-/*   Updated: 2019/11/15 06:00:10 by mabayle          ###   ########.fr       */
+/*   Updated: 2019/11/16 00:50:22 by mabayle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	dbg_core_manager(t_env *env)
 	while (env->loop)
 	{
 		if (env->edl.line == NULL)
-			ft_putstr("\033[0;36m21sh> \033[0;37m");
+			ft_putstr("\033[0;36m21sh > \033[0;37m");
 		ret = edl_controller(env);
 		edl_print(env);
 		if (ret == 1)
@@ -85,13 +85,6 @@ void	dbg_core_manager(t_env *env)
 			free(env->edl.line);
 			env->edl.line = NULL;
 		}
-		/*if ((ret = edl_controller(env)) >= 0)
-			if (ret == 1)
-				if (lexer_parser() == 1)
-					do_that_shet();*/
-		//si edl_controller renvoie 1, alors la ligne a ete cloturee
-		//si edl_controller renvoie 0, alors la ligne n'est pas cloturee
-		//si edl_controller renvoie -1, probleme, donc break
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: mabayle <mabayle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 04:21:06 by mabayle           #+#    #+#             */
-/*   Updated: 2019/11/15 05:22:25 by mabayle          ###   ########.fr       */
+/*   Updated: 2019/11/16 05:54:41 by mabayle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,7 @@ void	lex_suppr_elem(t_lex **elem);
 */
 int		check_redirection(char *input);
 int		check_operator(char *input);
+void	change_state(int state);
 int		quote_case(int i, char *input);
 int		ft_is_separator(char c);
 

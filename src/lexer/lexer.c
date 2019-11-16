@@ -6,7 +6,7 @@
 /*   By: mabayle <mabayle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 04:48:49 by mabayle           #+#    #+#             */
-/*   Updated: 2019/11/15 05:57:21 by mabayle          ###   ########.fr       */
+/*   Updated: 2019/11/16 06:26:59 by mabayle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,22 @@ void	valid(t_lex **lex, char *input, int io, int aword, int i)
 	list_add(lex, new);
 	ft_strdel(&token);
 }
+size_t	ft_lstsize(t_lex *lst)
+{
+	size_t	count;
+
+	if (!lst)
+	{
+		return (0);
+	}
+	count = 0;
+	while (lst != NULL)
+	{
+		count++;
+		lst = lst->next;
+	}
+	return (count);
+}
 
 char	*exception(char *input, t_lex *lex)
 {
@@ -77,6 +93,7 @@ char	*exception(char *input, t_lex *lex)
 	t_lex	*tmp;
 
 	new = NULL;
+	tmp = lex;
 	while (lex->next)
 	{
 		tmp = lex;
@@ -86,7 +103,10 @@ char	*exception(char *input, t_lex *lex)
 	new = ft_strjoin_one(last, ' ');
 	new = ft_strjoin_free(new, input);
 	lex = tmp;
-	lex_suppr_elem(&(lex->next));
+	if (ft_lstsize(lex) < 2)
+		lexdel(&lex);
+	else
+		lex_suppr_elem(&(lex->next));
 	return (new);
 }
 
@@ -114,9 +134,9 @@ void	ft_lexer(t_lex **lex, char *input)
 			valid(lex, input, io_nbr, assignword, i);
 		else
 		{
-			printf("[DEBUG][FT_LEXER][CHECK] Value de state_quote == %d\n", g_shell->lex->state_quote);
 			i = ft_strlen(input);
 			valid(lex, input, io_nbr, assignword, i);
+			change_state(g_shell->lex->state_quote);
 			return ;
 		}
 		input = input + i++;

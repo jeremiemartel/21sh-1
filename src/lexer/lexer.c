@@ -6,7 +6,7 @@
 /*   By: mabayle <mabayle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 04:48:49 by mabayle           #+#    #+#             */
-/*   Updated: 2019/11/16 06:26:59 by mabayle          ###   ########.fr       */
+/*   Updated: 2019/11/18 04:55:39 by mabayle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ char	*exception(char *input, t_lex *lex)
 	new = ft_strjoin_one(last, ' ');
 	new = ft_strjoin_free(new, input);
 	lex = tmp;
-	if (ft_lstsize(lex) < 2)
+	if (ft_lstsize(lex) <= 1)
 		lexdel(&lex);
 	else
 		lex_suppr_elem(&(lex->next));
@@ -136,7 +136,6 @@ void	ft_lexer(t_lex **lex, char *input)
 		{
 			i = ft_strlen(input);
 			valid(lex, input, io_nbr, assignword, i);
-			change_state(g_shell->lex->state_quote);
 			return ;
 		}
 		input = input + i++;

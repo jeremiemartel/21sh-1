@@ -6,7 +6,7 @@
 /*   By: mabayle <mabayle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 04:48:49 by mabayle           #+#    #+#             */
-/*   Updated: 2019/11/18 04:55:39 by mabayle          ###   ########.fr       */
+/*   Updated: 2019/11/19 04:39:07 by mabayle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,19 +94,23 @@ char	*exception(char *input, t_lex *lex)
 
 	new = NULL;
 	tmp = lex;
+	ft_putendl("[DEBUG] Exception ok avant while");
 	while (lex->next)
 	{
 		tmp = lex;
 		lex = lex->next;
+		ft_putstr("[DEBUG] Valeur de input dans le while de exception = ");
+		ft_putendl(lex->value);
 	}
 	last = lex->value;
 	new = ft_strjoin_one(last, ' ');
 	new = ft_strjoin_free(new, input);
 	lex = tmp;
-	if (ft_lstsize(lex) <= 1)
+	if (ft_lstsize(lex) < 2)
 		lexdel(&lex);
 	else
 		lex_suppr_elem(&(lex->next));
+	ft_putendl("[DEBUG] Exception ok");
 	return (new);
 }
 
@@ -119,6 +123,7 @@ void	ft_lexer(t_lex **lex, char *input)
 	int		assignword;
 
 	assignword = 0;
+	ft_putendl("[DEBUG] Je rentre dans ft_lexer");
 	if (!lex || !input)
 		return ;
 	if (g_shell->lex != NULL)
@@ -129,16 +134,29 @@ void	ft_lexer(t_lex **lex, char *input)
 		while (ft_is_separator(*input) == 1)
 			input++;
 		io_nbr = 0;
+		ft_putstr("[DEBUG] Valeur de input = ");
+		ft_putendl(input);
 		i = end_case_index(*lex, input, &io_nbr);
+		ft_putstr("[DEBUG] Valeur de i a la sortie de end_case_index = ");
+		ft_putnbr(i);
+		write(1, "\n", 1);
 		if (i != -1)
+		{
+			ft_putendl("[DEBUG] SEGV OK (valid)");
 			valid(lex, input, io_nbr, assignword, i);
+			g_shell->lex->state_quote == 1 ? change_state(1) : 0;
+			ft_putendl("[DEBUG] State_quote a 0");
+			input = input + i++;
+		}	
 		else
 		{
+			ft_putendl("[DEBUG] SEGV OK (invalid)");
 			i = ft_strlen(input);
 			valid(lex, input, io_nbr, assignword, i);
+			g_shell->lex->state_quote == 0 ? change_state(0) : 0;
+			ft_putendl("[DEBUG] State_quote a 1");
 			return ;
 		}
-		input = input + i++;
 	}
 	/*****  DEBUG *****/
 	while (g_shell->lex)

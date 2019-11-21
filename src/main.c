@@ -6,7 +6,7 @@
 /*   By: mabayle <mabayle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/30 04:53:07 by mabayle           #+#    #+#             */
-/*   Updated: 2019/11/18 03:28:07 by mabayle          ###   ########.fr       */
+/*   Updated: 2019/11/19 04:15:07 by mabayle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,11 +88,12 @@ void	dbg_core_manager(t_env *env)
 	}
 }
 
-t_21sh	*init_shell(void)
+t_21sh	*init_shell(t_env env)
 {
 	t_21sh		*shell;
 
 	shell = ft_memalloc(sizeof(*shell));
+	shell->env = env;
 	shell->lex = NULL;
 	shell->ast = NULL;
 	return (shell);
@@ -109,7 +110,7 @@ int		main(void)
 	env.edl.line = NULL;
 	edl_key_assoc(&env.edl);
 	edl_fun_assoc(&env.edl);
-	g_shell = init_shell();
+	g_shell = init_shell(env);
 	if (tcgetattr(0, &env.term) == 0)
 	{
 		sh_term_switch(env.term, 1);

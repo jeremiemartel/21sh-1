@@ -6,7 +6,7 @@
 /*   By: mabayle <mabayle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/30 05:21:12 by mabayle           #+#    #+#             */
-/*   Updated: 2019/11/18 03:39:33 by mabayle          ###   ########.fr       */
+/*   Updated: 2019/11/19 03:38:06 by mabayle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,11 @@ int		quote_case(int i, char *input)
 		}
 		input[i] != 34 ? i = -1 : i++;
 	}
-
+	if (g_shell->lex)
+	{
 		i == -1 && g_shell->lex->state_quote == 0 ? change_state(0) : 0;
 		i != -1 && g_shell->lex->state_quote == 1 ? change_state(1) : 0;
+	}
 	return (i);
 }
 

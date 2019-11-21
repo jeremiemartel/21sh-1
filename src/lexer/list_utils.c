@@ -6,7 +6,7 @@
 /*   By: mabayle <mabayle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/30 05:17:16 by mabayle           #+#    #+#             */
-/*   Updated: 2019/11/15 05:51:15 by mabayle          ###   ########.fr       */
+/*   Updated: 2019/11/19 03:52:51 by mabayle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_lex	*list_new(char *input)
 {
 	t_lex	*new;
 
-	if (!(new = (t_lex *)malloc(sizeof(*new))))
+	if (!(new = ft_memalloc(sizeof(t_lex))))
 		return (NULL);
 	if (input == NULL)
 		new->value = NULL;

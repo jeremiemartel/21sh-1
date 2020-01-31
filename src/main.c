@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "projectinclude.h"
-
+hello
 /*
 ** GENERAL NOTE
 ** TODO : ajouter la gestion de l'affichage a l'ecran

@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "projectinclude.h"
-hello
 /*
 ** GENERAL NOTE
 ** TODO : ajouter la gestion de l'affichage a l'ecran
@@ -78,6 +77,8 @@ void	dbg_core_manager(t_env *env)
 			ft_putchar('\n');
 			g_shell->line = env->edl.line;
 			ft_lexer(&g_shell->lex, g_shell->line);
+			ft_putendl_fd("boucle READ", 2);
+			ft_putendl_fd(g_shell->ast->root, 2);
 			if (ft_strcmp(env->edl.line, "exit") == 0)
 				env->loop = 0;
 			free(env->edl.line);
@@ -118,6 +119,8 @@ int		main(int argc, char **argv)
 	{
 		sh_term_switch(env.term, 1);
 		dbg_core_manager(&env);
+		ft_putendl_fd("HEYYYY", 2);
+		ft_putendl_fd(g_shell->ast->root, 2);
 		sh_term_switch(env.term, 0);
 	}
 	return (0);

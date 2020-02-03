@@ -1,6 +1,6 @@
-./obj
+obj
 ./21sh
-./vscode
+*.vscode
 *.dSYM
-./libft/obj
-./libft/libft.a
+*.o
+*.a
